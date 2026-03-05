@@ -6,6 +6,25 @@
 
 ---
 
+## ⚡ まず実行コマンド
+
+| やりたいこと | コマンド |
+|---|---|
+| 💜 Bravery に設定 | `npx hypesquad --bravery` |
+| 🧡 Brilliance に設定 | `npx hypesquad --brilliance` |
+| 💚 Balance に設定 | `npx hypesquad --balance` |
+| ❌ バッジを外す | `npx hypesquad --remove` |
+
+> 💡 pnpm や bun を使っている場合:
+> ```bash
+> pnpm dlx hypesquad --bravery
+> bunx hypesquad --bravery
+> ```
+
+実行後に `Discord token:` と表示されるので、トークンを貼り付けて Enter を押してください。
+
+---
+
 ## 🎖️ 対応バッジ
 
 | フラグ | House | バッジ |
@@ -116,23 +135,6 @@ Step 1 でコピーしたトークンを **貼り付け** て Enter を押して
 
 1. Discord で自分のアイコンをクリック → **プロフィール** を開く
 2. HypeSquad バッジが表示されていれば完了！ 🥳
-
----
-
-## 📖 コマンド一覧
-
-| やりたいこと | コマンド |
-|---|---|
-| 💜 Bravery に設定 | `npx hypesquad --bravery` |
-| 🧡 Brilliance に設定 | `npx hypesquad --brilliance` |
-| 💚 Balance に設定 | `npx hypesquad --balance` |
-| ❌ バッジを外す | `npx hypesquad --remove` |
-
-> 💡 pnpm や bun を使っている場合:
-> ```bash
-> pnpm dlx hypesquad --bravery
-> bunx hypesquad --bravery
-> ```
 
 ---
 
