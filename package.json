@@ -14,12 +14,23 @@
     "discord",
     "hypesquad",
     "badge",
-    "cli"
+    "cli",
+    "discord-api",
+    "npx",
+    "typescript"
   ],
   "license": "MIT",
+  "author": "xiitus",
+  "homepage": "https://github.com/xiitus/hypesquad#readme",
+  "bugs": {
+    "url": "https://github.com/xiitus/hypesquad/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xiitus/hypesquad.git"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "dependencies": {
     "tsx": "^4.19.0"
