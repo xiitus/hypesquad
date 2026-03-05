@@ -2,6 +2,8 @@
 
 > 🚫 UI から消えた Discord HypeSquad バッジを、コマンド一発で取得・削除できる CLI ツール
 
+🌐 **日本語** | [English](docs/README.en.md) | [中文](docs/README.zh.md) | [한국어](docs/README.ko.md) | [Français](docs/README.fr.md) | [Deutsch](docs/README.de.md) | [Русский](docs/README.ru.md)
+
 ---
 
 ## 🎖️ 対応バッジ
