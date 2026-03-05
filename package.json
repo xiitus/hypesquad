@@ -1,6 +1,6 @@
 {
   "name": "hypesquad",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CLI to set/remove Discord HypeSquad badges via API",
   "type": "module",
   "bin": {
