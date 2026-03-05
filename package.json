@@ -1,13 +1,14 @@
 {
   "name": "hypesquad",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI to set/remove Discord HypeSquad badges via API",
   "type": "module",
   "bin": {
-    "hypesquad": "./hypesquad.ts"
+    "hypesquad": "bin/cli.js"
   },
   "files": [
-    "hypesquad.ts"
+    "hypesquad.ts",
+    "bin/"
   ],
   "keywords": [
     "discord",
@@ -18,7 +19,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xiitus/hypesquad.git"
+    "url": "git+https://github.com/xiitus/hypesquad.git"
   },
   "dependencies": {
     "tsx": "^4.19.0"
