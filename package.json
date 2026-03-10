@@ -1,6 +1,6 @@
 {
   "name": "hypesquad",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "CLI to set/remove Discord HypeSquad badges via API",
   "type": "module",
   "bin": {
@@ -28,6 +28,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xiitus/hypesquad.git"
+  },
+  "scripts": {
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage"
   },
   "engines": {
     "node": ">=18"
