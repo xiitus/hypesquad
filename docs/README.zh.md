@@ -1,176 +1,75 @@
 # 🏠 hypesquad-collector
 
-> 🚫 一条命令即可设置或移除已从 UI 中消失的 Discord HypeSquad 徽章
+> 🚫 用一条命令设置或移除 Discord 界面里已经看不到的 HypeSquad 徽章
 
 🌐 [日本語](../README.md) | [English](README.en.md) | **中文** | [한국어](README.ko.md) | [Français](README.fr.md) | [Deutsch](README.de.md) | [Русский](README.ru.md)
 
 ---
 
-## 🎖️ 支持的徽章
+## ⚡ 运行命令
+| 徽章 | 想做什么 | 命令 |
+|---|---|---|
+| ![Bravery](../images/bravery.png) | 💜 设置为 Bravery | `npx hypesquad --bravery` |
+| ![Brilliance](../images/brilliance.png) | 🧡 设置为 Brilliance | `npx hypesquad --brilliance` |
+| ![Balance](../images/balance.png) | 💚 设置为 Balance | `npx hypesquad --balance` |
+| ❌ | ❌ 移除徽章 | `npx hypesquad --remove` |
+| 👀 | 先只看预览 | `npx hypesquad --bravery --dry-run` |
 
-| 参数 | House | 徽章 |
-|---|---|:---:|
-| `--bravery` | HypeSquad Bravery | ![Bravery](../images/bravery.png) |
-| `--brilliance` | HypeSquad Brilliance | ![Brilliance](../images/brilliance.png) |
-| `--balance` | HypeSquad Balance | ![Balance](../images/balance.png) |
-| `--remove` | 移除徽章 | ❌ |
+运行后会显示 `Discord token:`，把你的 token 粘贴进去并按回车。
 
----
+如果你不知道怎么查看 token，请看下面的 [🔑 TOKEN 查看方法](#-token-查看方法)。
 
-## 📋 前提条件
-
-本工具需要 **Node.js**。如果尚未安装，请先安装。
-
-### 🍎 Mac
-
-1. 打开 **终端**
-   - 按 `Cmd + Space`，输入「终端」，按回车
-2. 粘贴以下命令并按回车：
-
-```bash
-brew install node
-```
-
-> 💡 如果没有 `brew`，请从 [Node.js 官网](https://nodejs.org/zh-cn) 下载安装包。
-
-### 🪟 Windows
-
-1. 访问 [Node.js 官网](https://nodejs.org/zh-cn)
-2. 点击 **绿色的「LTS」按钮** 下载
-3. 打开下载的文件，按照提示完成安装
-4. 安装完成后 **重启电脑**
-
-### ✅ 验证安装
-
-打开终端（Windows 请用 **PowerShell**），运行：
-
-```bash
-node -v
-```
-
-显示 `v20.xx.x` 之类的版本号即为成功 👍
+加上 `--dry-run` 后，只会显示请求内容，不会真的修改徽章。
 
 ---
 
-## 🚀 使用方法（3 步）
+## 🔑 TOKEN 查看方法
 
-### 第 1 步 — 🔑 获取 Discord 令牌
-
-「令牌」是一串用于识别你 Discord 账户的长字符串。按以下步骤复制：
+TOKEN 是一串用来识别你的 Discord 账号的长字符串。可以按下面的方法复制：
 
 1. 用 **浏览器**（Chrome、Brave、Edge 等）打开 [Discord](https://discord.com/channels/@me)
-   - ⚠️ 请使用 **浏览器版**，而非桌面客户端
+   - ⚠️ 请使用**浏览器版**，不要用桌面客户端
+2. 打开**开发者工具**
+   - Windows：`F12`
+   - Mac：`Cmd + Option + I`
+3. 打开 **Network** 标签
+   - 如果没看到，可以点 `>>` 展开隐藏标签
+4. 回到 Discord，在任意频道发送一条消息
+   - 发 `hi` 或 `test` 都可以
+5. 点击左侧列表里的 **`messages`** 请求
+6. 打开 **Headers** 标签
+7. 找到 **Request Headers** 区域
+8. 找到 **`Authorization`**，右键复制它右边的长字符串 ✅
 
-2. 打开 **开发者工具**
-   - Windows：按 `F12`
-   - Mac：按 `Cmd + Option + I`（三个键同时按）
-
-3. 右侧（或底部）出现面板 → 点击顶部的 **「Network」** 标签
-   - 找不到的话，点击 `>>` 可以显示隐藏的标签
-
-4. 回到 Discord，在任意频道 **发送一条消息**
-   - 随便发什么都可以，比如「你好」或「test」
-
-5. 开发者工具左侧出现 **`messages`** 请求 → **点击它**
-
-6. 右侧显示详情 → 点击 **「Headers」** 标签
-
-7. 向下滚动，找到 **「Request Headers」** 部分
-
-8. 找到 **`Authorization`**，**右键 → 复制** 旁边的长字符串 ✅
-
-> ⚠️ **永远不要把令牌分享给任何人！**
-> 有了令牌，任何人都能完全控制你的账户。
-> 请像对待密码一样保管它 🔐
+> ⚠️ 不要把这个 TOKEN 分享给任何人。它和密码一样重要。
 
 ---
 
-### 第 2 步 — ⚡ 执行命令
+## ❓ 故障排查
+<details>
+<summary>展开</summary>
 
-打开终端（Windows 请用 PowerShell），粘贴以下内容并按回车：
+### 提示 “npx not found”
 
-```bash
-npx hypesquad --bravery
-```
+→ 再执行一次同样的命令。有些环境里，Node.js 的准备会稍微慢一点。
 
-> 💡 把 `--bravery` 改成 `--brilliance` 或 `--balance` 可以选择不同的 House。
+### 提示 “brew not found”
 
-系统会提示：
+→ 在 macOS 上，会通过 Homebrew 自动安装 Node.js。如果自动安装失败，请先到 [Homebrew 官网](https://brew.sh/) 或 [Node.js 官网](https://nodejs.org/zh-cn) 手动安装。
 
-```
-Discord token:
-```
+### 不知道怎么查看 TOKEN
 
-**粘贴** 第 1 步复制的令牌，然后按回车。
+→ 请看上面的 [🔑 TOKEN 查看方法](#-token-查看方法)。
 
-- Windows：`Ctrl + V` 粘贴
-- Mac：`Cmd + V` 粘贴
+### 提示 “Failed (401)”
 
-🔒 输入时屏幕显示 `****`（出于安全考虑，不会显示实际内容）。
+→ TOKEN 错了或者已经失效。请按上面的步骤重新获取。
 
-看到 `Done: Set to bravery (204)` 就表示成功了 🎉
+### 提示 “Failed (429)”
 
----
-
-### 第 3 步 — ✅ 确认徽章
-
-1. 在 Discord 中点击你的头像 → 打开 **个人资料**
-2. 如果 HypeSquad 徽章已经显示，就大功告成了！ 🥳
-
----
-
-## 📖 命令一览
-
-| 目标 | 命令 |
-|---|---|
-| 💜 设置为 Bravery | `npx hypesquad --bravery` |
-| 🧡 设置为 Brilliance | `npx hypesquad --brilliance` |
-| 💚 设置为 Balance | `npx hypesquad --balance` |
-| ❌ 移除徽章 | `npx hypesquad --remove` |
-
-> 💡 使用 pnpm 或 bun？
-> ```bash
-> pnpm dlx hypesquad --bravery
-> bunx hypesquad --bravery
-> ```
-
----
-
-## 🧪 模拟运行（预览模式）
-
-不实际更改徽章，仅查看将要发送的请求。不确定时请先使用：
-
-```bash
-npx hypesquad --bravery --dry-run
-```
-
-输出：
-
-```
-[DRY RUN] POST https://discord.com/api/v9/hypesquad/online
-  Action: bravery
-  Token: abcd****************************
-  Body: {"house_id":1}
-```
-
-确认没问题后，去掉 `--dry-run` 正式执行 👍
-
----
-
-## ❓ 常见问题
-
-### 提示「找不到 npx」
-
-→ 未安装 Node.js。请查看 [📋 前提条件](#-前提条件)。
-
-### 提示「Failed (401)」
-
-→ 令牌错误或已过期。请重新执行第 1 步。
-
-### 提示「Failed (429)」
-
-→ 短时间内请求过多。请等待几分钟后重试。
+→ 短时间内请求太多了。等几分钟再试。
 
 ### 徽章没有变化
 
-→ 关闭并重新打开 Discord，可能需要等一会儿才能生效。
+→ 关掉 Discord 再重新打开，有时需要一点时间刷新。
+</details>

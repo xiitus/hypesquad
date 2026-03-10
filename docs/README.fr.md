@@ -1,176 +1,75 @@
 # 🏠 hypesquad-collector
 
-> 🚫 Obtenez ou supprimez les badges Discord HypeSquad disparus de l'interface — en une seule commande
+> 🚫 Définissez ou supprimez un badge Discord HypeSquad disparu de l'interface avec une seule commande
 
 🌐 [日本語](../README.md) | [English](README.en.md) | [中文](README.zh.md) | [한국어](README.ko.md) | **Français** | [Deutsch](README.de.md) | [Русский](README.ru.md)
 
 ---
 
-## 🎖️ Badges disponibles
+## ⚡ Commandes
+| Badge | Action | Commande |
+|---|---|---|
+| ![Bravery](../images/bravery.png) | 💜 Définir Bravery | `npx hypesquad --bravery` |
+| ![Brilliance](../images/brilliance.png) | 🧡 Définir Brilliance | `npx hypesquad --brilliance` |
+| ![Balance](../images/balance.png) | 💚 Définir Balance | `npx hypesquad --balance` |
+| ❌ | ❌ Supprimer le badge | `npx hypesquad --remove` |
+| 👀 | Voir seulement l'aperçu | `npx hypesquad --bravery --dry-run` |
 
-| Option | House | Badge |
-|---|---|:---:|
-| `--bravery` | HypeSquad Bravery | ![Bravery](../images/bravery.png) |
-| `--brilliance` | HypeSquad Brilliance | ![Brilliance](../images/brilliance.png) |
-| `--balance` | HypeSquad Balance | ![Balance](../images/balance.png) |
-| `--remove` | Supprimer le badge | ❌ |
+Après l'exécution, `Discord token:` s'affiche. Collez votre token et appuyez sur Entrée.
 
----
+Si vous ne savez pas comment afficher votre token, consultez [🔑 Comment voir votre TOKEN](#-comment-voir-votre-token).
 
-## 📋 Prérequis
-
-Cet outil nécessite **Node.js**. Si vous ne l'avez pas encore, installez-le d'abord.
-
-### 🍎 Mac
-
-1. Ouvrez le **Terminal**
-   - Appuyez sur `Cmd + Espace`, tapez « Terminal » et appuyez sur Entrée
-2. Collez la commande suivante et appuyez sur Entrée :
-
-```bash
-brew install node
-```
-
-> 💡 Si `brew` n'est pas disponible, téléchargez l'installateur depuis le [site officiel de Node.js](https://nodejs.org/fr).
-
-### 🪟 Windows
-
-1. Rendez-vous sur le [site officiel de Node.js](https://nodejs.org/fr)
-2. Cliquez sur le **bouton vert « LTS »** pour télécharger
-3. Ouvrez le fichier téléchargé et suivez les étapes d'installation
-4. **Redémarrez votre PC** après l'installation
-
-### ✅ Vérifier l'installation
-
-Ouvrez le Terminal (Windows : **PowerShell**) et exécutez :
-
-```bash
-node -v
-```
-
-Si vous voyez quelque chose comme `v20.xx.x`, c'est bon 👍
+Ajouter `--dry-run` permet de prévisualiser la requête sans modifier réellement le badge.
 
 ---
 
-## 🚀 Comment utiliser (3 étapes)
+## 🔑 Comment voir votre TOKEN
 
-### Étape 1 — 🔑 Obtenir votre jeton Discord
-
-Un « jeton » est une longue chaîne de caractères qui identifie votre compte Discord. Suivez ces étapes pour le copier.
+Le token est une longue chaîne qui identifie votre compte Discord. Voici comment le copier :
 
 1. Ouvrez [Discord](https://discord.com/channels/@me) dans votre **navigateur** (Chrome, Brave, Edge, etc.)
    - ⚠️ Utilisez la **version navigateur**, pas l'application de bureau
-
 2. Ouvrez les **outils de développement**
-   - Windows : appuyez sur `F12`
-   - Mac : appuyez sur `Cmd + Option + I` (les trois en même temps)
+   - Windows : `F12`
+   - Mac : `Cmd + Option + I`
+3. Ouvrez l'onglet **Network**
+   - Si vous ne le voyez pas, cliquez sur `>>` pour afficher les onglets cachés
+4. Retournez sur Discord et envoyez un message dans n'importe quel salon
+   - Un simple `hi` ou `test` suffit
+5. Cliquez sur la requête **`messages`** dans la liste de gauche
+6. Ouvrez l'onglet **Headers**
+7. Repérez la section **Request Headers**
+8. Trouvez **`Authorization`**, puis faites clic droit pour copier la longue chaîne à droite ✅
 
-3. Un panneau apparaît à droite (ou en bas) → cliquez sur l'onglet **« Network »** en haut
-   - Si vous ne le trouvez pas, cliquez sur `>>` pour afficher les onglets masqués
-
-4. Retournez sur Discord et **envoyez un message** dans n'importe quel salon
-   - N'importe quoi comme « salut » ou « test »
-
-5. Une requête **`messages`** apparaît à gauche dans les outils de développement → **cliquez dessus**
-
-6. Les détails apparaissent à droite → cliquez sur l'onglet **« Headers »**
-
-7. Faites défiler vers le bas et trouvez la section **« Request Headers »**
-
-8. Trouvez **`Authorization`** et **clic droit → copier** la longue chaîne à côté ✅
-
-> ⚠️ **Ne partagez jamais ce jeton avec qui que ce soit !**
-> Avec votre jeton, n'importe qui peut contrôler entièrement votre compte.
-> Traitez-le comme un mot de passe 🔐
+> ⚠️ Ne partagez jamais ce token. Il doit être protégé comme un mot de passe.
 
 ---
 
-### Étape 2 — ⚡ Exécuter la commande
+## ❓ Dépannage
+<details>
+<summary>Ouvrir</summary>
 
-Ouvrez le Terminal (Windows : PowerShell), collez ce qui suit et appuyez sur Entrée :
+### « npx not found »
 
-```bash
-npx hypesquad --bravery
-```
+→ Exécutez exactement la même commande une seconde fois. Selon l'environnement, la préparation de Node.js peut prendre un peu plus de temps.
 
-> 💡 Remplacez `--bravery` par `--brilliance` ou `--balance` pour une autre House.
+### « brew not found »
 
-Vous verrez ce message :
+→ Sur macOS, Homebrew est utilisé pour installer Node.js automatiquement. Si cela échoue, installez-le d'abord depuis le [site de Homebrew](https://brew.sh/) ou le [site de Node.js](https://nodejs.org/fr).
 
-```
-Discord token:
-```
+### Je ne sais pas comment voir le TOKEN
 
-**Collez** le jeton copié à l'étape 1 et appuyez sur Entrée.
-
-- Windows : `Ctrl + V` pour coller
-- Mac : `Cmd + V` pour coller
-
-🔒 Votre saisie s'affiche en `****` par sécurité (les caractères réels ne sont pas visibles).
-
-Si vous voyez `Done: Set to bravery (204)`, c'est réussi 🎉
-
----
-
-### Étape 3 — ✅ Vérifier votre badge
-
-1. Sur Discord, cliquez sur votre avatar → ouvrez votre **Profil**
-2. Si le badge HypeSquad s'affiche, c'est terminé ! 🥳
-
----
-
-## 📖 Référence des commandes
-
-| Ce que vous voulez | Commande |
-|---|---|
-| 💜 Définir Bravery | `npx hypesquad --bravery` |
-| 🧡 Définir Brilliance | `npx hypesquad --brilliance` |
-| 💚 Définir Balance | `npx hypesquad --balance` |
-| ❌ Supprimer le badge | `npx hypesquad --remove` |
-
-> 💡 Vous utilisez pnpm ou bun ?
-> ```bash
-> pnpm dlx hypesquad --bravery
-> bunx hypesquad --bravery
-> ```
-
----
-
-## 🧪 Simulation (mode aperçu)
-
-Visualisez la requête sans réellement modifier votre badge. Essayez d'abord si vous n'êtes pas sûr :
-
-```bash
-npx hypesquad --bravery --dry-run
-```
-
-Résultat :
-
-```
-[DRY RUN] POST https://discord.com/api/v9/hypesquad/online
-  Action: bravery
-  Token: abcd****************************
-  Body: {"house_id":1}
-```
-
-Si tout semble bon, retirez `--dry-run` et exécutez pour de vrai 👍
-
----
-
-## ❓ FAQ
-
-### « npx introuvable »
-
-→ Node.js n'est pas installé. Voir [📋 Prérequis](#-prérequis).
+→ Consultez [🔑 Comment voir votre TOKEN](#-comment-voir-votre-token) ci-dessus.
 
 ### « Failed (401) »
 
-→ Votre jeton est incorrect ou expiré. Recommencez à l'étape 1.
+→ Le token est incorrect ou expiré. Récupérez-le de nouveau avec les étapes ci-dessus.
 
 ### « Failed (429) »
 
-→ Trop de requêtes en peu de temps. Attendez quelques minutes et réessayez.
+→ Trop de requêtes ont été envoyées en peu de temps. Attendez quelques minutes puis réessayez.
 
-### Le badge n'a pas changé
+### Le badge ne change pas
 
-→ Fermez et rouvrez Discord — l'actualisation peut prendre un moment.
+→ Fermez Discord puis ouvrez-le de nouveau. L'actualisation peut prendre un moment.
+</details>
