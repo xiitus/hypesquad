@@ -1,176 +1,75 @@
 # 🏠 hypesquad-collector
 
-> 🚫 Discord HypeSquad-Abzeichen, die aus der Oberfläche verschwunden sind, mit einem einzigen Befehl setzen oder entfernen
+> 🚫 Setze oder entferne ein Discord-HypeSquad-Abzeichen, das in der UI nicht mehr sichtbar ist, mit nur einem Befehl
 
 🌐 [日本語](../README.md) | [English](README.en.md) | [中文](README.zh.md) | [한국어](README.ko.md) | [Français](README.fr.md) | **Deutsch** | [Русский](README.ru.md)
 
 ---
 
-## 🎖️ Unterstützte Abzeichen
+## ⚡ Befehle
+| Abzeichen | Aktion | Befehl |
+|---|---|---|
+| ![Bravery](../images/bravery.png) | 💜 Auf Bravery setzen | `npx hypesquad --bravery` |
+| ![Brilliance](../images/brilliance.png) | 🧡 Auf Brilliance setzen | `npx hypesquad --brilliance` |
+| ![Balance](../images/balance.png) | 💚 Auf Balance setzen | `npx hypesquad --balance` |
+| ❌ | ❌ Abzeichen entfernen | `npx hypesquad --remove` |
+| 👀 | Erst nur Vorschau ansehen | `npx hypesquad --bravery --dry-run` |
 
-| Flag | House | Abzeichen |
-|---|---|:---:|
-| `--bravery` | HypeSquad Bravery | ![Bravery](../images/bravery.png) |
-| `--brilliance` | HypeSquad Brilliance | ![Brilliance](../images/brilliance.png) |
-| `--balance` | HypeSquad Balance | ![Balance](../images/balance.png) |
-| `--remove` | Abzeichen entfernen | ❌ |
+Nach dem Ausführen erscheint `Discord token:`. Füge deinen Token ein und drücke Enter.
 
----
+Wenn du nicht weißt, wie du den Token anzeigen kannst, siehe [🔑 TOKEN anzeigen](#-token-anzeigen).
 
-## 📋 Voraussetzungen
-
-Dieses Tool erfordert **Node.js**. Falls noch nicht installiert, bitte zuerst einrichten.
-
-### 🍎 Mac
-
-1. **Terminal** öffnen
-   - `Cmd + Leertaste` drücken, „Terminal" eingeben → Enter
-2. Folgenden Befehl einfügen und Enter drücken:
-
-```bash
-brew install node
-```
-
-> 💡 Falls `brew` nicht verfügbar ist, lade den Installer von der [Node.js-Website](https://nodejs.org/de) herunter.
-
-### 🪟 Windows
-
-1. Gehe zur [Node.js-Website](https://nodejs.org/de)
-2. Klicke auf den **grünen „LTS"-Button** zum Download
-3. Öffne die heruntergeladene Datei und folge den Installationsschritten
-4. **Starte den PC neu** nach der Installation
-
-### ✅ Installation prüfen
-
-Öffne das Terminal (Windows: **PowerShell**) und führe aus:
-
-```bash
-node -v
-```
-
-Wenn etwas wie `v20.xx.x` angezeigt wird, ist alles bereit 👍
+Mit `--dry-run` siehst du nur die Anfrage-Vorschau, ohne das Abzeichen wirklich zu ändern.
 
 ---
 
-## 🚀 Anleitung (3 Schritte)
+## 🔑 TOKEN anzeigen
 
-### Schritt 1 — 🔑 Discord-Token abrufen
-
-Ein „Token" ist eine lange Zeichenkette, die dein Discord-Konto identifiziert. So kopierst du ihn:
+Der Token ist eine lange Zeichenkette, die dein Discord-Konto identifiziert. So kopierst du ihn:
 
 1. Öffne [Discord](https://discord.com/channels/@me) im **Browser** (Chrome, Brave, Edge usw.)
-   - ⚠️ Verwende die **Browser-Version**, nicht die Desktop-App
-
+   - ⚠️ Nutze die **Browser-Version**, nicht die Desktop-App
 2. Öffne die **Entwicklertools**
-   - Windows: Drücke `F12`
-   - Mac: Drücke `Cmd + Option + I` (alle drei gleichzeitig)
+   - Windows: `F12`
+   - Mac: `Cmd + Option + I`
+3. Öffne den Tab **Network**
+   - Falls du ihn nicht siehst, klicke auf `>>`, um versteckte Tabs anzuzeigen
+4. Gehe zurück zu Discord und sende in einem beliebigen Kanal eine Nachricht
+   - Ein einfaches `hi` oder `test` reicht
+5. Klicke links auf die Anfrage **`messages`**
+6. Öffne den Tab **Headers**
+7. Suche den Abschnitt **Request Headers**
+8. Finde **`Authorization`** und kopiere per Rechtsklick die lange Zeichenkette daneben ✅
 
-3. Ein Panel erscheint rechts (oder unten) → klicke oben auf den **„Network"**-Tab
-   - Falls nicht sichtbar, klicke auf `>>` um versteckte Tabs anzuzeigen
-
-4. Gehe zurück zu Discord und **sende eine Nachricht** in einem beliebigen Kanal
-   - Irgendetwas wie „hi" oder „test" reicht
-
-5. Links in den Entwicklertools erscheint eine **`messages`**-Anfrage → **klicke darauf**
-
-6. Rechts werden Details angezeigt → klicke auf den **„Headers"**-Tab
-
-7. Scrolle nach unten und finde den Abschnitt **„Request Headers"**
-
-8. Finde **`Authorization`** und **Rechtsklick → Kopieren** der langen Zeichenkette daneben ✅
-
-> ⚠️ **Teile diesen Token niemals mit anderen!**
-> Mit deinem Token kann jeder dein Konto vollständig kontrollieren.
-> Behandle ihn wie ein Passwort 🔐
+> ⚠️ Teile diesen Token niemals mit anderen. Er ist so sensibel wie ein Passwort.
 
 ---
 
-### Schritt 2 — ⚡ Befehl ausführen
+## ❓ Fehlerbehebung
+<details>
+<summary>Öffnen</summary>
 
-Öffne das Terminal (Windows: PowerShell), füge Folgendes ein und drücke Enter:
+### „npx not found“
 
-```bash
-npx hypesquad --bravery
-```
+→ Führe denselben Befehl noch einmal aus. Je nach Umgebung kann die Vorbereitung von Node.js etwas länger dauern.
 
-> 💡 Ersetze `--bravery` durch `--brilliance` oder `--balance` für ein anderes House.
+### „brew not found“
 
-Du wirst gefragt:
+→ Unter macOS wird Homebrew verwendet, um Node.js automatisch zu installieren. Falls das fehlschlägt, installiere es zuerst über die [Homebrew-Website](https://brew.sh/) oder die [Node.js-Website](https://nodejs.org/de).
 
-```
-Discord token:
-```
+### Ich weiß nicht, wie ich den TOKEN sehen kann
 
-**Füge** den in Schritt 1 kopierten Token ein und drücke Enter.
+→ Siehe oben [🔑 TOKEN anzeigen](#-token-anzeigen).
 
-- Windows: `Strg + V` zum Einfügen
-- Mac: `Cmd + V` zum Einfügen
+### „Failed (401)“
 
-🔒 Die Eingabe wird als `****` angezeigt (aus Sicherheitsgründen sind die Zeichen nicht sichtbar).
+→ Der Token ist falsch oder abgelaufen. Hole ihn mit den obigen Schritten erneut.
 
-Wenn `Done: Set to bravery (204)` erscheint, hat es geklappt 🎉
+### „Failed (429)“
 
----
+→ In kurzer Zeit wurden zu viele Anfragen gesendet. Warte ein paar Minuten und versuche es erneut.
 
-### Schritt 3 — ✅ Abzeichen überprüfen
+### Das Abzeichen ändert sich nicht
 
-1. Klicke auf Discord auf dein Profilbild → öffne dein **Profil**
-2. Wenn das HypeSquad-Abzeichen angezeigt wird, bist du fertig! 🥳
-
----
-
-## 📖 Befehlsübersicht
-
-| Was du willst | Befehl |
-|---|---|
-| 💜 Auf Bravery setzen | `npx hypesquad --bravery` |
-| 🧡 Auf Brilliance setzen | `npx hypesquad --brilliance` |
-| 💚 Auf Balance setzen | `npx hypesquad --balance` |
-| ❌ Abzeichen entfernen | `npx hypesquad --remove` |
-
-> 💡 Du verwendest pnpm oder bun?
-> ```bash
-> pnpm dlx hypesquad --bravery
-> bunx hypesquad --bravery
-> ```
-
----
-
-## 🧪 Testlauf (Vorschaumodus)
-
-Sieh dir an, was gesendet würde, ohne das Abzeichen tatsächlich zu ändern. Probiere das zuerst, wenn du unsicher bist:
-
-```bash
-npx hypesquad --bravery --dry-run
-```
-
-Ausgabe:
-
-```
-[DRY RUN] POST https://discord.com/api/v9/hypesquad/online
-  Action: bravery
-  Token: abcd****************************
-  Body: {"house_id":1}
-```
-
-Wenn alles gut aussieht, entferne `--dry-run` und führe den Befehl richtig aus 👍
-
----
-
-## ❓ FAQ
-
-### „npx nicht gefunden"
-
-→ Node.js ist nicht installiert. Siehe [📋 Voraussetzungen](#-voraussetzungen).
-
-### „Failed (401)"
-
-→ Dein Token ist falsch oder abgelaufen. Wiederhole Schritt 1.
-
-### „Failed (429)"
-
-→ Zu viele Anfragen in kurzer Zeit. Warte einige Minuten und versuche es erneut.
-
-### Abzeichen hat sich nicht geändert
-
-→ Schließe Discord und öffne es erneut — die Aktualisierung kann einen Moment dauern.
+→ Schließe Discord komplett und öffne es erneut. Die Aktualisierung kann einen Moment dauern.
+</details>
