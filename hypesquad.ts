@@ -1,5 +1,8 @@
 #!/usr/bin/env tsx
 
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
 // --- Named constants ---
 
 export const enum HouseId {
@@ -9,6 +12,7 @@ export const enum HouseId {
 }
 
 export const enum Argv {
+  EntryScriptIndex = 1,
   ScriptArgsOffset = 2,
 }
 
@@ -36,6 +40,10 @@ export const enum Clamp {
   Floor = 0,
 }
 
+export const enum HttpStatus {
+  NoContent = 204,
+}
+
 // --- Types ---
 
 export type House = "bravery" | "brilliance" | "balance";
@@ -59,6 +67,11 @@ export interface ApiResult {
   readonly body: string;
 }
 
+export interface ApiFailure {
+  readonly body: string;
+  readonly expectedStatus: number;
+}
+
 // --- Domain constants ---
 
 const HOUSES: Readonly<Record<House, HouseId>> = {
@@ -70,6 +83,9 @@ const HOUSES: Readonly<Record<House, HouseId>> = {
 const HOUSE_NAMES: readonly House[] = Object.keys(HOUSES) as readonly House[];
 const VALID_ACTIONS: readonly Action[] = [...HOUSE_NAMES, "remove"];
 const API: string = "https://discord.com/api/v9/hypesquad/online";
+const STATUS_LABELS: Readonly<Record<number, string>> = {
+  [HttpStatus.NoContent]: "No Content",
+};
 
 // --- Pure functions ---
 
@@ -91,6 +107,12 @@ export const buildRequest = (action: Action, token: string): RequestOpts => {
   return { method: "POST", headers, body: JSON.stringify({ house_id: HOUSES[action] }) };
 };
 
+export const expectedStatusForAction = (_action: Action): HttpStatus =>
+  HttpStatus.NoContent;
+
+export const isExpectedStatus = (action: Action, status: number): boolean =>
+  status === expectedStatusForAction(action);
+
 export const maskToken = (token: string): string =>
   `${token.slice(Slice.FromStart, TokenMask.VisiblePrefixLength)}${"*".repeat(Math.max(Clamp.Floor, token.length - TokenMask.VisiblePrefixLength))}`;
 
@@ -102,6 +124,12 @@ export const formatDryRun = (action: Action, token: string, opts: RequestOpts): 
 
 export const formatResult = (action: Action, result: ApiResult): string =>
   result.ok ? `Done: ${action === "remove" ? "Removed" : `Set to ${action}`} (${result.status})` : `Failed (${result.status}): ${result.body}`;
+
+export const formatFailure = ({ body, expectedStatus }: ApiFailure): string => {
+  const summary: string = `Unexpected response status. Expected ${expectedStatus} ${STATUS_LABELS[expectedStatus] ?? "Success"}.`;
+  const details: string = body.trim();
+  return details ? `${summary} Response: ${details}` : summary;
+};
 
 export const usageMessage = (): string =>
   `Usage: npx hypesquad --<${VALID_ACTIONS.join("|")}> [--dry-run]`;
@@ -161,8 +189,12 @@ const execute = async (parsed: ParsedFlags, token: string): Promise<void> => {
   const opts: RequestOpts = buildRequest(parsed.action, token);
   const { body: reqBody, ...init }: RequestOpts = opts;
   const res: Response = await fetch(API, { ...init, body: reqBody ?? null });
-  const body: string = res.ok ? "" : await res.text();
-  console.log(formatResult(parsed.action, { ok: res.ok, status: res.status, body }));
+  const ok: boolean = isExpectedStatus(parsed.action, res.status);
+  const body: string = ok ? "" : formatFailure({
+    body: await res.text(),
+    expectedStatus: expectedStatusForAction(parsed.action),
+  });
+  console.log(formatResult(parsed.action, { ok, status: res.status, body }));
 };
 
 const abort = (msg: string): never => {
@@ -175,13 +207,20 @@ const requireToken = async (): Promise<string> => {
   return token || abort("Token is required.");
 };
 
-const run = async (parsed: ParsedFlags, token: string): Promise<void> =>
+export const run = async (parsed: ParsedFlags, token: string): Promise<void> =>
   parsed.dryRun ? runDryRun(parsed, token) : execute(parsed, token);
 
-const main = async (): Promise<void> => {
+export const isMainModule = (metaUrl: string, argv: readonly string[]): boolean => {
+  const entry: string | undefined = argv[Argv.EntryScriptIndex];
+  return entry !== undefined && resolve(entry) === fileURLToPath(metaUrl);
+};
+
+export const main = async (): Promise<void> => {
   const parsed: ParsedFlags = parseFlags(process.argv) ?? abort(usageMessage());
   const token: string = await requireToken();
   await run(parsed, token);
 };
 
-await main();
+if (isMainModule(import.meta.url, process.argv)) {
+  await main();
+}
