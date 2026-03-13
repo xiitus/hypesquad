@@ -1,19 +1,22 @@
 # 🏠 hypesquad-collector
 
-> 🚫 UI から消えた Discord HypeSquad バッジを、コマンド一発で取得・削除できる CLI ツール
+> 🚫 新規取得できなくなった Discord HypeSquad バッジを、コマンド一発で取得・削除できる CLI ツール
 
 🌐 **日本語** | [English](docs/README.en.md) | [中文](docs/README.zh.md) | [한국어](docs/README.ko.md) | [Français](docs/README.fr.md) | [Deutsch](docs/README.de.md) | [Русский](docs/README.ru.md)
 
 ---
 
 ## ⚡ 実行コマンド
-| バッジ | やりたいこと | コマンド |
-|---|---|---|
-| ![Bravery](images/bravery.png) | 💜 Bravery に設定 | `npx hypesquad --bravery` |
-| ![Brilliance](images/brilliance.png) | 🧡 Brilliance に設定 | `npx hypesquad --brilliance` |
-| ![Balance](images/balance.png) | 💚 Balance に設定 | `npx hypesquad --balance` |
-| ❌ | ❌ バッジを外す | `npx hypesquad --remove` |
-| 👀 | まず動作だけ確認する | `npx hypesquad --bravery --dry-run` |
+
+
+| バッジ        | やりたいこと            | コマンド                                |
+| ---------- | ----------------- | ----------------------------------- |
+| Bravery    | 💜 Bravery に設定    | `npx hypesquad --bravery`           |
+| Brilliance | 🧡 Brilliance に設定 | `npx hypesquad --brilliance`        |
+| Balance    | 💚 Balance に設定    | `npx hypesquad --balance`           |
+| ❌          | ❌ バッジを外す          | `npx hypesquad --remove`            |
+| 👀         | まず動作だけ確認する        | `npx hypesquad --bravery --dry-run` |
+
 
 実行後に `Discord token:` と表示されるので、トークンを貼り付けて Enter を押してください。
 
@@ -28,18 +31,18 @@
 「トークン」とは、あなたの Discord アカウントを識別するための長い文字列です。以下の手順でコピーします。
 
 1. **ブラウザ**（Chrome, Brave, Edge など）で [Discord](https://discord.com/channels/@me) を開く
-   - ⚠️ アプリ版ではなく **ブラウザ版** を使ってください
+  - ⚠️ アプリ版ではなく **ブラウザ版** を使ってください
 2. キーボードで **開発者ツール** を開く
-   - Windows: `F12` キー
-   - Mac: `Cmd + Option + I`（3つ同時押し）
+  - Windows: `F12` キー
+  - Mac: `Cmd + Option + I`（3つ同時押し）
 3. 画面右側（または下側）にパネルが出現 → 上部の **「Network」** タブをクリック
-   - 見つからない場合は `>>` をクリックすると隠れているタブが出てきます
+  - 見つからない場合は `>>` をクリックすると隠れているタブが出てきます
 4. Discord に戻り、適当なサーバーの適当なチャンネルで **何かメッセージを送信**
-   - 「あ」や「test」など、何でも OK です
-5. 開発者ツールの左側に **`messages`** というリクエストが表示される → **クリック**
+  - 「あ」や「test」など、何でも OK です
+5. 開発者ツールの左側に `**messages`** というリクエストが表示される → **クリック**
 6. 右側に詳細が表示される → **「Headers」** タブをクリック
 7. 下にスクロールして **「Request Headers」** セクションを探す
-8. **`Authorization`** という項目を見つけて、その右側の長い文字列を **右クリック → コピー** ✅
+8. `**Authorization`** という項目を見つけて、その右側の長い文字列を **右クリック → コピー** ✅
 
 > ⚠️ **この文字列（トークン）は絶対に他人と共有しないでください！**
 > トークンがあれば、あなたのアカウントで何でもできてしまいます。
@@ -48,8 +51,8 @@
 ---
 
 ## ❓ トラブルシューティング
-<details>
-<summary>開く</summary>
+
+開く
 
 ### 「npx が見つかりません」と出る
 
@@ -70,4 +73,4 @@
 ### バッジが変わらない
 
 → Discord を一度閉じて開き直すと反映されることがあります。
-</details>
+
