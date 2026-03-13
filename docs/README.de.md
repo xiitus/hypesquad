@@ -51,11 +51,7 @@ Der Token ist eine lange Zeichenkette, die dein Discord-Konto identifiziert. So 
 
 ### „npx not found“
 
-→ Führe denselben Befehl noch einmal aus. Je nach Umgebung kann die Vorbereitung von Node.js etwas länger dauern.
-
-### „brew not found“
-
-→ Unter macOS wird Homebrew verwendet, um Node.js automatisch zu installieren. Falls das fehlschlägt, installiere es zuerst über die [Homebrew-Website](https://brew.sh/) oder die [Node.js-Website](https://nodejs.org/de).
+→ `npx` wird mit Node.js ausgeliefert. Dieses CLI installiert Homebrew oder Node.js nicht mehr automatisch, also installiere zuerst Node.js 18.18+ über die [Node.js-Website](https://nodejs.org/de) oder deinen bevorzugten Paketmanager.
 
 ### Ich weiß nicht, wie ich den TOKEN sehen kann
 
