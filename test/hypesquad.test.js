@@ -27,7 +27,7 @@ test("formatFailure explains the expected status when the response is empty", ()
   assert.equal(
     formatFailure({
       body: "",
-      expectedStatus: HttpStatus.NoContent,
+      expectedStatus: 204,
     }),
     "Unexpected response status. Expected 204 No Content."
   );
@@ -37,7 +37,7 @@ test("formatFailure appends the API response body when present", () => {
   assert.equal(
     formatFailure({
       body: "{\"message\":\"401: Unauthorized\",\"code\":0}",
-      expectedStatus: HttpStatus.NoContent,
+      expectedStatus: 204,
     }),
     "Unexpected response status. Expected 204 No Content. Response: {\"message\":\"401: Unauthorized\",\"code\":0}"
   );

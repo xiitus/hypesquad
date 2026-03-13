@@ -53,11 +53,7 @@
 
 ### 「npx が見つかりません」と出る
 
-→ もう一度同じコマンドを実行してください。環境によっては Node.js の準備に少し時間がかかることがあります。
-
-### 「brew が見つかりません」と出る
-
-→ Mac では Homebrew を使って Node.js を補完します。自動導入に失敗した場合は、[Homebrew 公式サイト](https://brew.sh/ja/) または [Node.js 公式サイト](https://nodejs.org/ja) から先にインストールしてください。
+→ `npx` は Node.js に含まれます。この CLI 自体で Homebrew や Node.js の自動導入は行わないので、[Node.js 公式サイト](https://nodejs.org/ja) などから Node.js 18.18 以上を先にインストールしてください。
 
 ### 「TOKEN の見方がわからない」
 

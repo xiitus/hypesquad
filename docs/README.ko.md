@@ -51,11 +51,7 @@
 
 ### "npx not found" 가 나와요
 
-→ 같은 명령어를 한 번 더 실행해 보세요. 환경에 따라 Node.js 준비에 시간이 조금 걸릴 수 있습니다.
-
-### "brew not found" 가 나와요
-
-→ macOS에서는 Homebrew로 Node.js를 자동 설치합니다. 자동 설치가 실패하면 [Homebrew 사이트](https://brew.sh/) 또는 [Node.js 공식 사이트](https://nodejs.org/ko)에서 먼저 설치하세요.
+→ `npx`는 Node.js에 포함되어 있습니다. 이 CLI는 더 이상 Homebrew나 Node.js를 자동 설치하지 않으므로, [Node.js 공식 사이트](https://nodejs.org/ko) 또는 선호하는 패키지 관리자로 Node.js 18.18+를 먼저 설치하세요.
 
 ### TOKEN을 어떻게 보는지 모르겠어요
 

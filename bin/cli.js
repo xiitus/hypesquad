@@ -4,7 +4,7 @@ import { resolve, dirname } from "path";
 import { launchCli } from "./launcher.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const script = resolve(__dirname, "..", "hypesquad.ts");
+const script = resolve(__dirname, "..", "hypesquad.js");
 
 try {
   launchCli({
