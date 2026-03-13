@@ -51,7 +51,11 @@ A token is a long string that identifies your Discord account. Copy it like this
 
 ### "npx not found"
 
-→ `npx` ships with Node.js. This CLI no longer bootstraps Homebrew or Node.js for you, so install Node.js 18.18+ first from the [Node.js website](https://nodejs.org/) or your preferred package manager.
+→ Run the same command one more time. On some environments, Node.js setup can take a little longer.
+
+### "brew not found"
+
+→ On macOS, Homebrew is used to install Node.js automatically. If that fails, install it first from the [Homebrew website](https://brew.sh/) or the [Node.js website](https://nodejs.org/).
 
 ### "I don't know how to view my TOKEN"
 
