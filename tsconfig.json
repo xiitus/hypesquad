@@ -3,6 +3,9 @@
     "target": "ES2022",
     "module": "ES2022",
     "moduleResolution": "bundler",
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
@@ -16,5 +19,5 @@
     "isolatedModules": true,
     "skipLibCheck": true
   },
-  "include": ["*.ts", "test/**/*.ts"]
+  "include": ["*.js", "bin/**/*.js", "test/**/*.js"]
 }
